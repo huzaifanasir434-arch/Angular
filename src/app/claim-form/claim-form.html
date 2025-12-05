@@ -1,0 +1,173 @@
+
+<div class="claim-form-wrapper">
+
+  <h1 class="title">HEALTH GUARD CLAIM FORM</h1>
+
+  <form [formGroup]="claimForm" (ngSubmit)="reset()">
+
+    <!-- SECTION A -->
+    <div class="card">
+      <h2>Section A – Card Holder Information</h2>
+
+      <div formGroupName="holder">
+
+        <div class="grid-2">
+          <div>
+            <label>Organization Name</label>
+            <input type="text" formControlName="organization">
+          </div>
+          <div>
+            <label>HR Emp. ID #</label>
+            <input type="text" formControlName="hrEmpId">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Employee Name</label>
+            <input type="text" formControlName="employeeName">
+          </div>
+          <div>
+            <label>Designation</label>
+            <input type="text" formControlName="designation">
+          </div>
+        </div>
+
+        <div class="grid-1">
+          <div>
+            <label>Office Address</label>
+            <input type="text" formControlName="officeAddress">
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div>
+            <label>Contact No</label>
+            <input type="text" formControlName="contactNo">
+          </div>
+
+          <div>
+            <label>Patient Name</label>
+            <input type="text" formControlName="patientName">
+          </div>
+
+          <div>
+            <label>Patient Age</label>
+            <input type="number" formControlName="patientAge">
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div>
+            <label>CNIC</label>
+            <input type="text" formControlName="cnic">
+          </div>
+
+          <div>
+            <label>Relation</label>
+            <input type="text" formControlName="relation">
+          </div>
+
+          <div>
+            <label>Sex (M/F)</label>
+            <input type="text" maxlength="1" formControlName="sex">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CLAIM DETAILS -->
+    <div class="card">
+      <h2>Claim Details</h2>
+
+      <div formGroupName="claim">
+
+        <div class="grid-1">
+          <div>
+            <label>Clinic / Hospital & Doctor</label>
+            <input type="text" formControlName="clinicHospitalDoctor">
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <div>
+            <label>Admission From</label>
+            <input type="date" formControlName="admissionFrom">
+          </div>
+
+          <div>
+            <label>To</label>
+            <input type="date" formControlName="admissionTo">
+          </div>
+
+          <div>
+            <label>Surgeon Fee</label>
+            <input type="number" formControlName="surgeonFee">
+          </div>
+
+          <div>
+            <label>OT Charges</label>
+            <input type="number" formControlName="otCharges">
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div>
+            <label>Anesthesia</label>
+            <input type="number" formControlName="anesthesia">
+          </div>
+
+          <div>
+            <label>Consultation Fee</label>
+            <input type="number" formControlName="consultationFee">
+          </div>
+
+          <div>
+            <label>Medicine Cost</label>
+            <input type="number" formControlName="medicineCost">
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div>
+            <label>Lab Test Cost</label>
+            <input type="number" formControlName="labTestCost">
+          </div>
+
+          <div>
+            <label>Other Charges</label>
+            <input type="number" formControlName="otherCharges">
+          </div>
+
+          <div>
+            <label>Total Cost</label>
+            <input type="number" formControlName="totalCost">
+          </div>
+        </div>
+
+        <div class="grid-1">
+          <div>
+            <label>Nature of Claim</label>
+            <select formControlName="natureOfClaim">
+              <option value="">Select One</option>
+              <option>OPD</option>
+              <option>Hospitalization</option>
+              <option>Maternity</option>
+              <option>Dread Disease</option>
+              <option>Specialized Investigation</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+      <button type="submit">Submit Claim</button>
+      <button type="button" (click)="reset()">Reset</button>
+    </div>
+
+  </form>
+</div>

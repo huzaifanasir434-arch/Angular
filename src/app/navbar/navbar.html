@@ -1,0 +1,25 @@
+
+<nav *ngIf="!isAuthPage()" class="navbar">
+
+  <a routerLink="/home">Home</a>
+  <a routerLink="/about">About</a>
+  <a routerLink="/contact">Contact</a>
+
+  <span style="float: right;">
+
+    <!-- Logged-in area -->
+    <ng-container *ngIf="isLoggedIn$ | async; else loggedOut">
+      <!-- Show email -->
+      <span>Welcome, {{ userEmail }}</span>
+
+      <a href="#" (click)="authLogout()">Logout</a>
+    </ng-container>
+
+    <!-- Logged-out area -->
+    <ng-template #loggedOut>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </ng-template>
+
+  </span>
+</nav>

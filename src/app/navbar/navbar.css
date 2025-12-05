@@ -1,0 +1,17 @@
+.nav {
+  padding: 10px;
+  background-color: #f2f2f2;
+  display: flex;
+  border-radius: 15px;
+}
+
+.navbar a {
+  text-decoration: none;
+
+  color: #a02c2c;
+  margin: 0 5px;
+}
+
+.navbar a:hover {
+  color: #8ea4bd;
+}

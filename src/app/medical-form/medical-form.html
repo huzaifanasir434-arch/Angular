@@ -1,0 +1,63 @@
+<h2>Medical Form</h2>
+
+<form [formGroup]="medicalForm" (ngSubmit)="onSubmit()">
+
+
+  <label>Full Name:</label>
+  <input type="text" formControlName="name" />
+  <div class="error" *ngIf="medicalForm.get('name')?.touched && medicalForm.get('name')?.invalid">
+    Name is required.
+  </div>
+
+
+  <label>Age:</label>
+  <input type="number" formControlName="age" />
+  <div class="error" *ngIf="medicalForm.get('age')?.touched && medicalForm.get('age')?.invalid">
+    Age must be between 0 and 120.
+  </div>
+
+
+  <label>Gender:</label>
+  <select formControlName="gender">
+    <option value="">Select</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+  </select>
+  <div class="error" *ngIf="medicalForm.get('gender')?.touched && medicalForm.get('gender')?.invalid">
+    Gender is required.
+  </div>
+
+
+  <label>Phone Number:</label>
+  <input maxlength="12" type="tel" formControlName="phone" />
+ <div class="error"
+     *ngIf="medicalForm.get('phone')?.touched && medicalForm.get('phone')?.invalid">
+  Phone number must be in the format: 03XX-XXXXXXX
+</div>
+
+
+<label>Insurance Provider:</label>
+<input type="text" formControlName="insuranceProvider" />
+<div class="error"
+  *ngIf="medicalForm.get('insuranceProvider')?.touched && medicalForm.get('insuranceProvider')?.invalid">
+  Insurance provider is required (minimum 3 characters).
+</div>
+
+
+<label>Insurance Number:</label>
+<input type="text" formControlName="insuranceNumber" />
+<div class="error"
+  *ngIf="medicalForm.get('insuranceNumber')?.touched && medicalForm.get('insuranceNumber')?.invalid">
+  Insurance number is required.
+</div>
+
+  <label>Appointment Date:</label>
+  <input type="date" formControlName="appointmentDate" />
+  <div class="error" *ngIf="medicalForm.get('appointmentDate')?.touched && medicalForm.get('appointmentDate')?.invalid">
+    Appointment date is required.
+  </div>
+
+  <button type="submit" [disabled]="medicalForm.invalid">Submit</button>
+
+</form>

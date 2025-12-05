@@ -1,0 +1,26 @@
+<h2>Contact Us</h2>
+
+<form (ngSubmit)="submitForm()" #contactForm="ngForm">
+
+  <label>Name:</label>
+  <input type="text" required [(ngModel)]="formData.name" name="name" />
+  <br><br>
+
+  <label>Email:</label>
+  <input type="email" required [(ngModel)]="formData.email" name="email" />
+  <br><br>
+
+  <label>Message:</label><br>
+  <textarea required [(ngModel)]="formData.message" name="message"></textarea>
+  <br><br>
+
+  <button type="submit" [disabled]="!contactForm.valid">Send</button>
+
+</form>
+
+<div *ngIf="submitted" style="margin-top: 20px;">
+  <h3>Form Submitted!</h3>
+  <p><strong>Name:</strong> {{ formData.name }}</p>
+  <p><strong>Email:</strong> {{ formData.email }}</p>
+  <p><strong>Message:</strong> {{ formData.message }}</p>
+</div>

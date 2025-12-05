@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+}
+input {
+
+padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-page {
+  align-items: center;
+  background-color: #eaf0ea;
+  color: rgb(12, 11, 11);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}

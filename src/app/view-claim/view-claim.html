@@ -1,0 +1,46 @@
+
+<!-- ................................................................... -->
+
+<div class="view-wrapper">
+  <h1>Saved Claims</h1>
+
+  <div class="controls">
+    <button (click)="clearAll()" class="danger">Clear All</button>
+  </div>
+
+  <div class="sdiv">
+  <ul class="claims-list" *ngIf="savedClaims.length; else none">
+    <li *ngFor="let c of savedClaims; let i = index">
+
+      <div class="left">
+        <div class="name">
+          {{ c.holder?.patientName || c.holder?.employeeName || 'Unknown' }}
+        </div>
+        <div class="meta">
+          {{ c._savedAt ? (c._savedAt | date:'medium') : '—' }}
+        </div>
+      </div>
+
+      <!-- DETAILS PREVIEW (Cleaned) -->
+      <div class="details">
+        <div><strong>Organization:</strong> {{ c.holder?.organization }}</div>
+        <div><strong>Employee Name:</strong> {{ c.holder?.employeeName }}</div>
+        <div><strong>Patient Name:</strong> {{ c.holder?.patientName }}</div>
+        <div><strong>Relation:</strong> {{ c.holder?.relation }}</div>
+        <div><strong>Sex:</strong> {{ c.holder?.sex }}</div>
+        <div><strong>Contact No:</strong> {{ c.holder?.contactNo }}</div>
+        <hr>
+        <div><strong>Clinic / Doctor:</strong> {{ c.claim?.clinicHospitalDoctor }}</div>
+        <!-- Keep ONLY Total Cost -->
+        <div><strong>Total Cost:</strong> {{ c.claim?.totalCost || '0' }}</div>
+      </div>
+      <hr>
+
+    </li>
+  </ul>
+
+  <ng-template #none>
+    <p class="empty">No saved claims found.</p>
+  </ng-template>
+</div>
+</div>
