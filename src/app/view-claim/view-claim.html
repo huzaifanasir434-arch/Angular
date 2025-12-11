@@ -1,14 +1,12 @@
 
-<!-- ................................................................... -->
-
 <div class="view-wrapper">
   <h1>Saved Claims</h1>
 
+<div class="sdiv">
   <div class="controls">
     <button (click)="clearAll()" class="danger">Clear All</button>
   </div>
 
-  <div class="sdiv">
   <ul class="claims-list" *ngIf="savedClaims.length; else none">
     <li *ngFor="let c of savedClaims; let i = index">
 
@@ -21,7 +19,7 @@
         </div>
       </div>
 
-      <!-- DETAILS PREVIEW (Cleaned) -->
+
       <div class="details">
         <div><strong>Organization:</strong> {{ c.holder?.organization }}</div>
         <div><strong>Employee Name:</strong> {{ c.holder?.employeeName }}</div>
@@ -31,7 +29,7 @@
         <div><strong>Contact No:</strong> {{ c.holder?.contactNo }}</div>
         <hr>
         <div><strong>Clinic / Doctor:</strong> {{ c.claim?.clinicHospitalDoctor }}</div>
-        <!-- Keep ONLY Total Cost -->
+
         <div><strong>Total Cost:</strong> {{ c.claim?.totalCost || '0' }}</div>
       </div>
       <hr>

@@ -1,63 +1,98 @@
-<h2>Medical Form</h2>
 
-<form [formGroup]="medicalForm" (ngSubmit)="onSubmit()">
+<div class="page-wrap">
+  <div class="form-card">
+    <h2>Medical Form</h2>
 
+    <!-- keep your same bindings and validation names -->
+    <form [formGroup]="medicalForm" (ngSubmit)="onSubmit()">
 
+      <div class="field-wrap full">
   <label>Full Name:</label>
-  <input type="text" formControlName="name" />
+  <input type="text" formControlName="name" appNameFormat="swap" />
+
   <div class="error" *ngIf="medicalForm.get('name')?.touched && medicalForm.get('name')?.invalid">
     Name is required.
   </div>
+</div>
 
+      <!-- <div class="field-wrap full">
+        <label>Full Name:</label>
+        <input type="text" formControlName="name"/>
 
-  <label>Age:</label>
-  <input type="number" formControlName="age" />
-  <div class="error" *ngIf="medicalForm.get('age')?.touched && medicalForm.get('age')?.invalid">
-    Age must be between 0 and 120.
-  </div>
+            // only for display purpose
+        <p>Formatted: {{ medicalForm.get('name')?.value | swapCase:'title' }}</p>
 
+         <div class="error" *ngIf="medicalForm.get('name')?.touched && medicalForm.get('name')?.invalid">
+          Name is required.
+        </div>
+      </div> -->
 
-  <label>Gender:</label>
-  <select formControlName="gender">
-    <option value="">Select</option>
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    <option value="Other">Other</option>
-  </select>
-  <div class="error" *ngIf="medicalForm.get('gender')?.touched && medicalForm.get('gender')?.invalid">
-    Gender is required.
-  </div>
+      <div class="field-wrap">
+        <label>Age:</label>
+        <input type="number" formControlName="age" />
+        <div class="error" *ngIf="medicalForm.get('age')?.touched && medicalForm.get('age')?.invalid">
+          Age must be between 0 and 120.
+        </div>
+      </div>
 
+      <div class="field-wrap">
+        <label>Gender:</label>
+        <select formControlName="gender">
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="error" *ngIf="medicalForm.get('gender')?.touched && medicalForm.get('gender')?.invalid">
+          Gender is required.
+        </div>
+      </div>
 
+      <div class="field-wrap">
   <label>Phone Number:</label>
-  <input maxlength="12" type="tel" formControlName="phone" />
- <div class="error"
-     *ngIf="medicalForm.get('phone')?.touched && medicalForm.get('phone')?.invalid">
-  Phone number must be in the format: 03XX-XXXXXXX
-</div>
-
-
-<label>Insurance Provider:</label>
-<input type="text" formControlName="insuranceProvider" />
-<div class="error"
-  *ngIf="medicalForm.get('insuranceProvider')?.touched && medicalForm.get('insuranceProvider')?.invalid">
-  Insurance provider is required (minimum 3 characters).
-</div>
-
-
-<label>Insurance Number:</label>
-<input type="text" formControlName="insuranceNumber" />
-<div class="error"
-  *ngIf="medicalForm.get('insuranceNumber')?.touched && medicalForm.get('insuranceNumber')?.invalid">
-  Insurance number is required.
-</div>
-
-  <label>Appointment Date:</label>
-  <input type="date" formControlName="appointmentDate" />
-  <div class="error" *ngIf="medicalForm.get('appointmentDate')?.touched && medicalForm.get('appointmentDate')?.invalid">
-    Appointment date is required.
+  <input
+    type="tel"
+    formControlName="phone"
+    appPhoneFormat
+    placeholder="03XX-XXXXXXX"
+  />
+  <!-- <h3>{{ medicalForm.get('phone')?.valid}}</h3> -->
+  <div class="error"
+       *ngIf="medicalForm.get('phone')?.touched && medicalForm.get('phone')?.invalid">
+    Phone number must be in the format: 03XX-XXXXXXX
   </div>
+</div>
 
-  <button type="submit" [disabled]="medicalForm.invalid">Submit</button>
+      <!-- </div> -->
 
-</form>
+      <div class="field-wrap full">
+        <label>Insurance Provider:</label>
+        <input type="text" formControlName="insuranceProvider" />
+        <div class="error" *ngIf="medicalForm.get('insuranceProvider')?.touched && medicalForm.get('insuranceProvider')?.invalid">
+          Insurance provider is required (minimum 3 characters).
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <label>Insurance Number:</label>
+        <app-custom-input formControlName="insuranceNumber"></app-custom-input>
+        <!-- <input type="text" formControlName="insuranceNumber" /> -->
+        <div class="error" *ngIf="medicalForm.get('insuranceNumber')?.touched && medicalForm.get('insuranceNumber')?.invalid">
+          Insurance number is required.
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <label>Appointment Date:</label>
+        <input type="date" formControlName="appointmentDate" />
+        <div class="error" *ngIf="medicalForm.get('appointmentDate')?.touched && medicalForm.get('appointmentDate')?.invalid">
+          Appointment date is required.
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" [disabled]="medicalForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

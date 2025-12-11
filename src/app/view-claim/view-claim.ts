@@ -31,6 +31,7 @@ export class ViewClaim {
     }
   }
 
+
   // optional: clear all
   clearAll() {
     if (!confirm('Delete all saved claims?')) return;

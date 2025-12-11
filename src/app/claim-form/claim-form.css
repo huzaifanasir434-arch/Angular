@@ -1,104 +1,143 @@
-
-
-.claim-form-wrapper {
-  max-width: 750px;
-  margin: 30px auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-
+/* Layout wrapper that will move form to the right (for sidebar) */
+.main-content {
+  /* Adjust this value to match your sidebar width (default 220px) */
+  margin-left: 220px;
+  padding: 24px;
+  min-height: 100vh;
+  background: #f7f8fb; /* subtle page background */
+  box-sizing: border-box;
 }
 
+/* The form card wrapper — keeps content centered and constrained */
+.claim-form-wrapper {
+  max-width: 980px;        /* grow on larger screens but keep readable line length */
+  margin: 16px auto;
+  padding: 22px;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(20,20,30,0.06);
+}
+
+/* Title */
 .title {
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 25px;
+  font-size: 20px;
+  margin-bottom: 18px;
   text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 
+/* Card boxes */
 .card {
-  border: 1px solid #000;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 4px;
-
+  border: 1px solid #e6e6e6;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background: #ffffff;
 }
 
 .card h2 {
-  margin-bottom: 15px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
 }
 
+/* Labels and controls */
 label {
-  font-weight: bold;
+  font-weight: 600;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  color: #222;
+  font-size: 13px;
 }
 
 input,
-select {
-  width: 90%;
-  padding: 7px 10px;
-  border: 1px solid #000;
-  border-radius: 3px;
-  margin-bottom: 15px;
+select,
+textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #cfcfcf;
+  border-radius: 6px;
+  margin-bottom: 12px;
   font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .12s ease;
 }
 
-
-
-.grid-1 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.08);
 }
 
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+/* Responsive grid using auto-fit & minmax */
+.grid-1 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+
+/* For very small columns (avoid too many columns on small screens) */
+@media (max-width: 1000px) {
+  .grid-4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+@media (max-width: 640px) {
+  .main-content { margin-left: 0; padding: 14px; }
+  .claim-form-wrapper { margin: 8px; padding: 14px; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .title { font-size: 18px; }
 }
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
-
-
-
+/* Buttons */
 .action-buttons {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 button {
-  padding: 10px 20px;
-  border: black 1px solid;
-  font-weight: bold;
+  padding: 10px 18px;
+  border: 1px solid #111;
+  font-weight: 700;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  background: transparent;
+  transition: transform .06s ease, box-shadow .08s ease;
 }
+
+button:hover { transform: translateY(-2px); }
 
 .submit-btn {
   background: #0074e8;
-  color: white;
+  color: #fff;
+  border-color: #0074e8;
+  box-shadow: 0 6px 18px rgba(0,116,232,0.12);
 }
 
 .reset-btn {
-  background: #aaa;
-  color: black;
-  margin-left: 20px;
+  background: #f1f1f1;
+  color: #111;
+  border-color: #d0d0d0;
 }
 
+/* Small helper: limit numeric inputs width visually on larger screens (optional) */
+input[type="number"] { max-width: 100%; }
 
+/* Make select nice on mobile */
+select { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: linear-gradient(45deg, transparent 50%, #999 50%), linear-gradient(135deg, #999 50%, transparent 50%); background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px); background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; padding-right: 36px; }
 
-
+/* optional: improved card separation for print / small screens */
+@media print {
+  .main-content, .claim-form-wrapper { box-shadow: none; background: #fff; }
+}

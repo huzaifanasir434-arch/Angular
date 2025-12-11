@@ -12,6 +12,7 @@ import { Home } from './home/home';
 import { MedicalForm } from './medical-form/medical-form';
 import { ClaimFormComponent } from './claim-form/claim-form';
 import { ViewClaim } from './view-claim/view-claim';
+import { MedicalArray } from './form-array/form-array';
 
 
 
@@ -40,10 +41,18 @@ export const routes: Routes = [
         path: 'claim-form',
         component: ClaimFormComponent,
       },
-       {
-    path: 'view-claim',
-    component: ViewClaim,
-  },
+      {
+        path: 'view-claim',
+        component: ViewClaim,
+      },
+         {
+        path: 'view-claim',
+        component: ViewClaim,
+      },
+      {
+        path: 'form-array',
+        component: MedicalArray,
+      },
       {
         path: 'about',
         component: About

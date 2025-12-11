@@ -1,23 +1,130 @@
-form {
-  max-width: 400px;
-  margin: 50px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-label {
-  font-weight: bold;
-}
 
-input, select, textarea, button {
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
 
-.error {
-  color: red;
-  font-size: 9px;
-  margin-top: -8px;
-}
+  /* Container / page layout */
+  .page-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 28px 16px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+    min-height: 100vh;
+  }
+
+  /* Card */
+  .form-card {
+    width: 100%;
+    max-width: 720px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(18, 38, 63, 0.06);
+    padding: 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  h2 {
+    margin: 0 0 12px 0;
+    font-size: 20px;
+    letter-spacing: -0.2px;
+    color: #102a43;
+  }
+
+  /* Form layout */
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+    align-items: start;
+  }
+
+  /* Make some fields take full width */
+  .full {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #0b2545;
+  }
+
+  /* Controls */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="tel"],
+  select,
+  textarea {
+    border: 1px solid #000; /* black border as requested */
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    outline: none;
+    transition: box-shadow .12s ease, border-color .12s ease;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+    border-color: #1e90ff;
+  }
+
+  /* Error styling (kept same text and checks) */
+  .error {
+    color: #c92a2a;
+    font-size: 11px;
+    margin-top: 6px;
+    line-height: 1;
+  }
+
+  /* Button row */
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    grid-column: 1 / -1;
+    margin-top: 6px;
+  }
+
+  button[type="submit"] {
+    background: linear-gradient(180deg,#0b61ff 0%, #0a52e6 100%);
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(11,97,255,0.18);
+    transition: transform .08s ease, opacity .12s ease;
+  }
+  button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    form {
+      grid-template-columns: 1fr;
+    }
+    .actions {
+      justify-content: stretch;
+    }
+    button[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  /* Small helper for subtle input hint spacing */
+  .field-wrap { display:flex; flex-direction:column; gap:4px; }
+

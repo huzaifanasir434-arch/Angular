@@ -27,6 +27,11 @@ export class Home {
     this.router.navigate(['/view-claim']);
   }
 
+   goToFormArray() {
+    this.router.navigate(['/form-array']);
+  }
+
+
   logout() {
     // this.auth.logout();
     this.router.navigate(['/login']);

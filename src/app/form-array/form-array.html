@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <h2>Medical Patients Form (FormArray)</h2>
+
+  <form [formGroup]="medicalForm" (ngSubmit)="onSubmit()">
+
+    <div formArrayName="patients">
+
+      <div
+        class="patient-card"
+        *ngFor="let p of patientsArray.controls; let i = index"
+        [formGroupName]="i">
+
+        <h3>
+          Patient #{{ i + 1 }}
+          <button type="button" class="delete-patient" (click)="deletePatient(i)">Delete Patient</button>
+        </h3>
+
+        <label>Name</label>
+        <input type="text" formControlName="name">
+
+        <label>Age</label>
+        <input type="number" formControlName="age">
+
+        <label>Gender</label>
+        <select formControlName="gender">
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+
+        <label>Phone (03xx-xxxxxxx)</label>
+        <input type="text" formControlName="phone">
+
+
+        <!-- TEST FIELD ARRAY -->
+        <h3>Test Fields</h3>
+
+        <div formArrayName="testArray">
+
+          <div
+            class="test-card"
+            *ngFor="let t of getTestArray(i).controls; let ti = index"
+            [formGroupName]="ti">
+
+            <label>Test Field #{{ ti + 1 }}</label>
+            <input type="text" formControlName="testField">
+
+            <button type="button"
+                    class="delete-test"
+                    (click)="deleteTestField(i, ti)">
+              Delete
+            </button>
+
+          </div>
+
+        </div>
+
+        <button type="button" class="add-btn" (click)="addTestField(i)">
+          + Add Test Field
+        </button>
+
+      </div>
+
+    </div>
+
+    <button type="button" class="add-btn" (click)="addPatient()">+ Add New Patient</button>
+
+    <button type="submit" class="save-btn">Save All</button>
+
+  </form>
+</div>
